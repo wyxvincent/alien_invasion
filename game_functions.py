@@ -5,6 +5,7 @@ from alien import Alien
 from time import sleep
 from tkinter import *
 from tkinter import messagebox
+import alien_invasion as ai
 
 # 事件检查方法
 def check_events(ai_settings, screen, ship, bullets):
@@ -120,7 +121,9 @@ def ship_hit(ai_settings, screen, ship, aliens, bullets, status):
 
 def game_over():
     Tk().wm_withdraw()
-    if messagebox.showinfo('Game Over!','Game Over!'):
+    if messagebox.askyesno('Game Over!','是否要重新开始？'):
+        ai.run_game()
+    else:
         sys.exit()
 
 def update_ship_lifes(status):
